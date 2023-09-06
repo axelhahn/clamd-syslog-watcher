@@ -43,3 +43,26 @@ EXAMPLES:
     clamav-syslog-watcher.sh -s 60   start scan and set scan interval to 60 sec
     clamav-syslog-watcher.sh -n -q   Show only found infections and no coloring
 ```
+
+## Screenshots
+
+After starting the syslog watcher interactively:
+
+![Screenshot](docs/images/screenshot_interactive_start.png)
+
+When I simulate a virus detection (using the eicar test file) it will be shown in the terminal. The First detection is marked with prefix "NEW". If the same file will be detected again, you get a prefix "OLD" and gray text.
+
+![Screenshot](docs/images/screenshot_virus_detected.png)
+
+Any 1st detection of a new (probaly) infected file will be shown as notification:
+
+![Screenshot](docs/images/screenshot_notification.png)
+
+## Log
+
+In the subdir "logs" a file named ``infections_[YEAR]-[MONTH].txt`` will be created.
+
+```txt
+$ cat log/infections__23-09.txt 
+Sep 06 18:32:45 linux-pc clamd[570]: Wed Sep  6 18:32:45 2023 -> /home/axel/Downloads/eicar.com.txt: Win.Test.EICAR_HDB-1 FOUND
+```
